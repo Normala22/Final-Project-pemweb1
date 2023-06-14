@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+    <style>
+      body{
+          font-family: sans-serif;
+          background-image: url(images/bglogin.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+
+      #logo{
+          width: 100%;
+          margin:auto;
+          padding:auto;
+          padding-bottom: 20px;
+      }
+
+      #container{
+          width: 360px;
+          background: white;
+          margin:180px auto;
+          padding: 30px 20px;
+          border-radius: 6px;
+      }
+      input[type=text],
+      input[type=password]{
+          font-size: 15px;
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          -webkit-transition: 0.5s;
+          transition: 0.5s;
+          outline: none;
+          background-size: 30px;
+          background-position: 5px 5px;
+          background-repeat: no-repeat;
+          padding-left: 40px;
+          border-radius: 5px;
+      }
+      input[type=text]{
+          background-image: url('images/user.png');
+      }
+      input[type=password]{
+          background-image: url('images/password.png');
+      }
+              
+      input[type=text]:focus,
+      input[type=password]:focus {
+          border: 2px solid #290d0d;
+      }
+
+      input[type=submit],
+      input[type=reset]{
+          font-size: 15px;
+          background: #009973;
+          color: white;
+          border: white 3px solid;
+          border-radius: 5px;
+          padding: 12px 20px;
+          cursor:pointer;
+          margin-top: 10px;
+      }
+
+      input[type=submit]:hover,
+      input[type=reset]:hover{
+          opacity:0.9;
+      }
+
+      input[type=reset]{
+          background:  #999999;
+      }
+  </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+
+    <div id="container">
+      <div id="login-form">
+          <img id="logo" src="images/Cashmere MILK.jpg">
+          <p class="title">REGISTER</p>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Nama Lengkap</h5>
+              <input type="text" class="input" id="nameLk" />
+            </div>
+          </div>
+          <div class="input-div namaLk">
+            <div class="i">
+              <i class="fas fa-pencil"></i>
+            </div>
+            <div class="div">
+              <h5>Username</h5>
+              <input type="text" class="input" id="username" />
+            </div>
+          </div>
+          <div class="input-div username">
+            <div class="i">
+              <i class="fas fa-pencil"></i>
+            </div>
+            <div class="div">
+              <h5>No. HP</h5>
+              <input type="text" class="input" id="nomorhp" />
+            </div>
+          </div>
+          <div class="input-div nomorhp">
+            <div class="i">
+              <i class="fas fa-pencil"></i>
+            </div>
+
+            <!-- <div class="div">
+              <h5>Nomor HP</h5>
+            <input type="text" class="input" id="telInp" />
+          </div>
+        </div>
+        <div class="input-div telepon">
+          <div class="i">
+            <i class="fas fa-lock"></i>
+          </div> -->
+          <div class="div">
+            <h5>Password</h5>
+          <input type="password" class="input" id="password" />
+        </div>
+      </div>
+
+        <input type="submit" class="btn" id="sub_btn" value="Register" />
+
+        <a href="login_new.html">Sudah Memiliki Akun</a>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCuj-kaZ4ROOf5rsdaf3Xq51cx9A6-lrNU",
+          authDomain: "project-web-9466a.firebaseapp.com",
+          databaseURL: "https://project-web-9466a-default-rtdb.firebaseio.com",
+          projectId: "project-web-9466a",
+          storageBucket: "project-web-9466a.appspot.com",
+          messagingSenderId: "327638966036",
+          appId: "1:327638966036:web:68267d8ea506e4208fec01"
+        };
+      
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      import { getDatabase, ref, child, set, get, update, remove } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+      const db = getDatabase();
+
+      //--references--//
+
+      const name = document.getElementById("nameLk");
+      const username = document.getElementById("username");
+      const nomorhp = document.getElementById("nomorhp");
+      const password = document.getElementById("password");
+      const submit = document.getElementById("sub_btn");
+
+      //--validation--//
+
+      function isEmptyOrSpaces(str) {
+       return str == null || str.match(/^ *$/) !== null;
+      }
+
+      function validation() {
+        let nameregex = /^[a-zA-Z\s]+$/;
+        let usernameregex = /^[a-zA-Z0-9]+$/;
+        let nomorhpregex = /^[0-9]+$/;
+        let passwordregex = /^[a-zA-Z0-9]+$/;
+
+        if (isEmptyOrSpaces(name.value) || isEmptyOrSpaces(username.value) || isEmptyOrSpaces(nomorhp.value) || isEmptyOrSpaces(password.value)) {
+          alert("Silahkan Isi Semua Data");
+        }
+
+          if (!nameregex.test(name.value)) {
+          alert("Nama harus Sesuai dengan Alphabet");
+          return false;
+        }
+
+        if (!nomorhpregex.test(nomorhp.value)) {
+          alert("nomorhp berupa angka");
+          return false;
+        }
+        return true;
+      }
+
+      //--register user to firebase--//
+
+        function RegisterUser() {
+        if (!validation()) {
+          return;
+        }
+
+        const dbRef = ref(db);
+
+        get(child(dbRef, "Data-Akun/" + username.value)).then((snapshot) => {
+          if (snapshot.exists()) {
+            alert("Akun sudah terdaftar!");
+          } else {
+            set(ref(db, "Data-Akun/" + username.value), {
+              name: name.value,
+              username: username.value,
+              nomorhp: nomorhp.value,
+              password: password.value,
+            })
+              .then(() => {
+                alert("registrasi berhasil");
+                window.location = "login_new.html";
+              })
+              .catch((error) => {
+                alert("gagal");
+              });
+          }
+        });
+      }
+
+      //assign the events
+      submit.addEventListener("click", RegisterUser);
+    </script>
+  </body>
+</html>
