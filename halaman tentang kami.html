@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>halaman tentang kami</title>
+</head>
+<style>
+  
+  body {
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+
+  * {
+    font-family: sans-serif;
+  }
+
+  .back-top {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 30px;
+    border: none;
+    padding: 7px 20px;
+    color: rgb(57, 174, 71);
+    background-color: white;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+
+
+  .header {
+    width: 100%;
+    height: auto;
+    background: url(images/siring.jpg);
+    background-size:cover ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .header>.subheader {
+    width: 70%;
+    height: auto;
+    margin: 20px;
+    margin-top: 15vh;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px #393434;
+    text-align: center;
+    font-size: 20px;
+
+  }
+
+  .header>.bottom-book {
+    text-decoration: none;
+    font-size: 22px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 30px;
+    margin: 10px;
+    margin-bottom: 5vh;
+    color: rgb(57, 174, 71);
+  }
+  
+  /*tombol click me*/
+  .button-profil {
+    background-color: rgb(41, 41, 41);
+    border: none;
+    color: white;
+    font-size: 40px;
+    padding: 15px 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 30px;
+  }
+
+  .button-profil-close {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    float: right;
+    transition: 0.2s;
+  }
+
+  .button-profil-close:hover{
+    background-color: rgb(249, 51, 51);
+    color: white;
+  }
+
+  .Pop-up-profil {
+    opacity: 0; /*buat ngehidden pop up*/
+    visibility: hidden; /*buat ngehidden pop up*/
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(9, 9, 9, 0.5);
+    transition: all 0.5s ease-in-out;
+    width: 80%;
+    overflow-y: auto;
+    max-height: 750px;
+    transform: skewY(50deg);
+  }
+
+  .Pop-up-profil.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .flex-container>div {
+    background-color: #f6f6f6;
+    box-shadow: 1px 1px 5px rgb(75, 75, 75);
+    width: 250px;
+    margin: 10px 10px 50px 20px;
+    height: auto;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .latar-btn-tutup {
+    background-color: #f6f6f6;
+    min-width: fit-content;
+    height: 40px;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid rgb(190, 190, 190);
+  }
+
+  .flex-container > div > a {
+    background-color: rgb(66, 184, 48);
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .flex-container > div > a:hover{
+    background-color: rgb(25, 132, 27);
+  }
+</style>
+
+<body>
+  <div class="header">
+    <a class="back-top" href="latihanPa.html">Back</a>
+    <div class="subheader">
+      <h3>Selamat Datang di Website TRIP (Travel and Explore With Interactive Platfrom)!</h3>
+      <h1>WE PROVIDE ONLY THE BEST TOURS</h1>
+      <p>Selamat Datang di Website TRIP (Travel and Explore With Interactive Platform)!
+        Kami adalah situs yang menyediakan informasi dan layanan terbaik untuk para pengguna kami.
+        Tim kami terdiri dari para ahli dibidangmya masing-masing termasuk web development, UI/UX design, content creation
+        Kami bekerjasama dengan tujuan untuk memberikan pengalaman terbaik bagi pengguna kami.
+        Jangan ragu untuk menghubungi kami jika anda memiliki pertanyaan atau saran
+        Terimakasih telah mengunjungi Website TRIP kami^^</p>
+    </div>
+    <a class="bottom-book" href="latihanPa.html">
+      <div>BOOK NOW!</div>
+    </a>
+  </div>
+  <h2 style="text-align: center;">Profil kelompok 1 Kelas A2</h2>
+  <center>
+    <button class="button-profil" id="tombol-profil">Click Me^^</button>
+  </center>
+  <div class="Pop-up-profil" id="Profil">
+    <div class="latar-btn-tutup">
+      <button class="button-profil-close" id="btn-close">X</button>
+    </div>
+    <h2 align="center">Our Team</h2>
+    <div class="flex-container">
+      <div> <img src="images/mala.jpg" width="240" height="240">
+        <h2>NORMALA</h2>
+        <h4>Programming HTML dan CSS</h4>
+        <h4>Desain Figma</h4>
+        <p>Asal Instansi : Universitas Lambung Mangkurat</p>
+        <p>Prodi : Pendidikan Komputer</p>
+        <p>Angkatan : 2022</p>
+       <a href="https://wa.me/6285754810593">WhatsApp</a>
+      </div>
+      <div> <img src="images/ka dayah.jpg" width="240" height="240">
+        <h2>SITI NUR HIDAYAH</h2>
+        <h4>Programming HTML dan CSS</h4>
+        <h4>Desain Figma</h4>
+        <p>Asal Instansi : Universitas Lambung Mangkurat</p>
+        <p>Prodi : Pendidikan Komputer</p>
+        <p>Angkatan : 2018</p>
+        <a href="https://wa.me/6285754035290">WhatsApp</a>
+      </div>
+      <div> <img src="images/elva.jpg" width="240" height="240">
+        <h2>ELVA RAHMATIAH</h2>
+        <h4>Programming HTML dan CSS</h4>
+        <h4>Desain Figma</h4>
+        <p>Asal Instansi : Universitas Lambung Mangkurat</p>
+        <p>Prodi : Pendidikan Komputer</p>
+        <p>Angkatan : 2022</p>
+        <a href="https://wa.me/6281549235081">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    const btnAbout = document.getElementById('tombol-profil');
+    const Profil = document.getElementById('Profil');
+    const btnClose = document.getElementById('btn-close');
+    btnAbout.addEventListener('click', () => {
+      Profil.classList.add('show');
+    });
+    btnClose.addEventListener('click', () => {
+      Profil.classList.remove('show');
+    });
+  </script>
+</body>
+
+</html>
